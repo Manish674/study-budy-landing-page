@@ -79,6 +79,9 @@ export default function Home() {
 
   return (
     <div className="pb-4">
+      <div className="border-b p-4 font-extrabold text-4xl">
+        StudyBuddy
+      </div> 
       <div>
         <div className="lg:flex lg:h-screen items-center justify-around">
           <div className=" lg:w-[50%] mt-16 flex flex-col items-center justify-center">
