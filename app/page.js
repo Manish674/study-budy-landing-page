@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import WaitlistForm from "../component/Waitlist";
 
 const FeatureCard = ({ heading, para }) => {
   return (
@@ -39,15 +40,15 @@ export default function Home() {
         </p>
       ),
     },
-    // {
-    //   heading: "StudyFlow: The Mastery Tool",
-    //   para: (
-    //     <p>
-    //       Boost your focus and productivity with StudyFlow. Master time
-    //       management and achieve study success effortlessly
-    //     </p>
-    //   ),
-    // },
+    {
+      heading: "StudyFlow: The Mastery Tool",
+      para: (
+        <p>
+          Boost your focus and productivity with StudyFlow. Master time
+          management and achieve study success effortlessly
+        </p>
+      ),
+    },
   ];
 
   return (
@@ -113,28 +114,7 @@ export default function Home() {
             <h2 className="font-semibold text-center text-4xl">
               Join the waitlist
             </h2>
-            <form className="mt-8 flex flex-col space-y-4 w-[80%] mx-auto">
-              <input
-                autoComplete="off"
-                name="name"
-                placeholder="name"
-                className="p-2 border border-[#ebebed] outline-none"
-              />
-              <input
-                autoComplete="off"
-                name="email"
-                placeholder="email"
-                className="p-2 border border-[#ebebed] outline-none"
-              />
-              <textarea
-                name="thoughts"
-                placeholder="Thoughts? Share below (optional)"
-                className="p-2 border border-[#ebebed] outline-none h-[152px]"
-              />
-              <button className="bg-[#e92761] text-white p-4 rounded-lg  ">
-                Join waitlist
-              </button>
-            </form>
+            <WaitlistForm />
           </div>
         </div>
       </div>
