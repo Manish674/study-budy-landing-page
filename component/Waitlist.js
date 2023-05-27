@@ -16,6 +16,11 @@ const Waitlist = () => {
     }));
   };
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    
+  }
+
   return (
     <form className="mt-8 flex flex-col space-y-4 w-[80%] mx-auto">
       <input
@@ -29,6 +34,7 @@ const Waitlist = () => {
       <input
         name="email"
         autoComplete="off"
+        type="email"
         onChange={(e) => handleWaitlistStateMutation(e)}
         value={waitlistData.email}
         placeholder="email"

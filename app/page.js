@@ -22,6 +22,7 @@ const FeatureCard = ({ heading, imgPath, para }) => {
     </div>
   );
 };
+
 export default function Home() {
   const [transformationValue, setTransformationValue] = useState(0);
 
