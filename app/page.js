@@ -1,13 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import WaitlistForm from "../component/Waitlist";
+import React, { useState } from "react";
 
-const FeatureCard = ({ heading, para }) => {
+const FeatureCard = ({ heading, imgPath, para }) => {
   return (
     <div className="min-w-[100%]">
       <div className="flex justify-center">
         <Image
-          src="/images/VC.jpg"
+          src={`${imgPath}`}
           className="rounded-full"
           width={300}
           height={300}
@@ -21,9 +23,31 @@ const FeatureCard = ({ heading, para }) => {
   );
 };
 export default function Home() {
+  const [transformationValue, setTransformationValue] = useState(0);
+
+  // decrement
+  const handleLeftArrowClick = () => {
+    if (transformationValue <= 0) {
+      setTransformationValue(2);
+      return;
+    }
+
+    setTransformationValue((prevState) => prevState - 1);
+  };
+
+  // increment
+  const handleRightArrowClick = () => {
+    if (transformationValue >= 2) {
+      setTransformationValue(0);
+      return;
+    }
+    setTransformationValue((prevState) => prevState + 1);
+  };
+
   const featureData = [
     {
       heading: "StudyChat: Virtual Study Hangouts",
+      imgPath: "/images/VC.jpg",
       para: (
         <p className="text-sm">
           Connect, collaborate, and excel with seamless video calls.{" "}
@@ -33,6 +57,7 @@ export default function Home() {
     },
     {
       heading: "TaskTrack: Organize and Conquer",
+      imgPath: "/images/todo.jpg",
       para: (
         <p className="text-sm">
           Your ultimate sidekick for student success. Organize, conquer, and
@@ -42,8 +67,9 @@ export default function Home() {
     },
     {
       heading: "StudyFlow: The Mastery Tool",
+      imgPath: "/images/pomodoro-timer.jpg",
       para: (
-        <p>
+        <p className="text-sm">
           Boost your focus and productivity with StudyFlow. Master time
           management and achieve study success effortlessly
         </p>
@@ -52,10 +78,10 @@ export default function Home() {
   ];
 
   return (
-    <div>
+    <div className="pb-4">
       <div>
         <div className="lg:flex lg:h-screen items-center justify-around">
-          <div className=" w-[50%] mt-16 flex flex-col items-center justify-center">
+          <div className=" lg:w-[50%] mt-16 flex flex-col items-center justify-center">
             <div className="">
               <h1 className="font-semibold text-center text-3xl">
                 StudyBuddy: Connect, Collaborate, Excel <br /> The Ultimate
@@ -69,15 +95,16 @@ export default function Home() {
                 features.{" "}
               </p>
             </div>
-            <Link href={'#join-waitlist'}>
+            <Link href={"#join-waitlist"}>
               <button className="mt-4 bg-[#1a73e8] p-4 rounded-lg text-white font-medium">
                 Join waitlist
               </button>
             </Link>
           </div>
           <hr className="my-8 w-3/4 mx-auto lg:hidden" />
-          <div className="lg:w-[40%] flex w-[90%] mx-auto lg:mx-0">
-            <div className=" my-auto">
+          <div className=" lg:w-[40%] flex w-[90%] mx-auto lg:mx-0 lg:justify-center">
+            {/* Arrow */}
+            <div className=" my-auto" onClick={() => handleLeftArrowClick()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10.605"
@@ -88,13 +115,26 @@ export default function Home() {
               </svg>
             </div>
 
-            <div className="flex flex-nowrap overflow-hidden">
-              {featureData.map((el, i) => (
-                <FeatureCard key={i} heading={el.heading} para={el.para} />
-              ))}
+            <div className="overflow-hidden lg:w-[60%] ">
+              <div
+                className="flex flex-nowrap w-full"
+                style={{
+                  transform: `translateX(-${transformationValue * 100}%)`,
+                }}
+              >
+                {featureData.map((el, i) => (
+                  <FeatureCard
+                    key={i}
+                    heading={el.heading}
+                    imgPath={el.imgPath}
+                    para={el.para}
+                  />
+                ))}
+              </div>
             </div>
 
-            <div className=" my-auto">
+            {/* Arrow */}
+            <div className=" my-auto" onClick={() => handleRightArrowClick()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10.605"
