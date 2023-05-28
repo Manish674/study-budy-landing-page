@@ -4,6 +4,7 @@ import Link from "next/link";
 import WaitlistForm from "../components/Waitlist";
 import React, { useState } from "react";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const FeatureCard = ({ heading, imgPath, para }) => {
   return (
@@ -157,20 +158,18 @@ export default function Home() {
               className="mt-4 max-w-[600px] mx-auto lg:h-[95vh] lg:flex items-center"
             >
               <div className="lg:w-full">
-                <div className="w-[50%] mx-auto border border-black">
-                  <ToastContainer
-                    position="bottom-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="light"
-                  />
-                </div>
+                <ToastContainer
+                  position="top-center"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="light"
+                />
                 <h2 className="font-semibold text-center text-4xl">
                   Join the waitlist
                 </h2>

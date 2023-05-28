@@ -50,14 +50,14 @@ const Waitlist = () => {
 
     try {
       const waitlistCollectionRef = collection(db, "users");
-      // await addDoc(waitlistCollectionRef, {
-      //   email: waitlistData.email,
-      //   name: waitlistData.name,
-      //   thoughts: waitlistData.thoughts,
-      // });
+      await addDoc(waitlistCollectionRef, {
+        email: waitlistData.email,
+        name: waitlistData.name,
+        thoughts: waitlistData.thoughts,
+      });
 
       toast.success("Thank for signing up for waitlist!", {
-        position: "bottom-center",
+        position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -72,6 +72,16 @@ const Waitlist = () => {
         thoughts: "",
       });
     } catch (e) {
+      toast.error("something went wrong", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
       console.log(e);
     }
   };
