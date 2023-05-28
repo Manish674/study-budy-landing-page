@@ -89,7 +89,7 @@ const Waitlist = () => {
   return (
     <form
       onSubmit={(e) => handleOnSubmit(e)}
-      className="mt-8 flex border flex-col space-y-4 w-[80%] mx-auto"
+      className="mt-8 flex flex-col space-y-4 w-[80%] mx-auto"
     >
       <div className="flex flex-col">
         <input
